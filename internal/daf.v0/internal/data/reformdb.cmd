@@ -1,0 +1,1 @@
+reform-db -db-driver=sqlite3 -db-source="%MYAPPDATA%/daf/daf.sqlite" init

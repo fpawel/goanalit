@@ -1,0 +1,76 @@
+body{
+    font-size:20px;
+    font-family: Verdana,sans-serif;
+}
+
+table {
+    display: inline-block;
+    text-align: left;
+}
+
+table, th, td { 
+    border-collapse: collapse; 
+    border: 1px solid grey;
+}
+th, td { 
+    padding: 3px 5px;
+}
+
+a.btn-link{
+    margin:5px;
+}
+
+a.btn-link:link, a.btn-link:visited {
+    background-color: LightSeaGreen;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a.btn-link:hover, a.btn-link:active {
+    background-color: green;
+}
+
+.center-block-wrapper {
+    text-align: center;				
+}
+.exception-message {
+    display: inline-block;
+    border: 2px solid grey;
+    padding: 20px;
+    margin: 20px;
+    background: LightCyan;
+}
+
+.page-title {
+    font-family: fontawesome;
+    background:skyblue;
+    color: #555555;
+    line-height: 1;
+    font-size: 37px;
+    letter-spacing: 3px;
+    padding: 15px 20px;
+}
+
+table.errors-log td:nth-child(1) {
+    color:green;
+}
+
+table.errors-log td:nth-child(2) {
+    color:red;    
+}
+
+table.errors-log td:nth-child(3) {
+    color:navy;
+}
+
+table.errors-log td:nth-child(1) a:link, table.errors-log td:nth-child(1) a:visited  {
+    text-decoration: none;
+}
+
+table.errors-log td:nth-child(1) a:hover, table.errors-log td:nth-child(1) a:active  {
+    text-decoration: underline;
+}

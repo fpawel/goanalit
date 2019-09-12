@@ -1,0 +1,16 @@
+debug/
+Win32/
+bin/
+.vscode/
+.idea/
+build/*
+!build/*.exe.manifest
+!build/img/
+*.exe
+*.tds
+*.~*
+*.dcu
+__history
+__recovery
+*.local
+*.identcache

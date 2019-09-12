@@ -1,0 +1,108 @@
+{% package main %}
+{% import "time" %}
+
+{%
+interface Page {
+    Title()
+    Body()
+}
+%}
+
+{% func MainHTML(p Page) %}
+    <!doctype html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" type="text/css" href="/assets/css/main.css">				
+	</head>
+	<body>
+	<h1 class="page-title">
+		{%s= p.Title() %}
+	</h1>
+	{%s= p.Body() %}    
+	</body>
+</html>
+{% endfunc %}
+
+{% code
+
+type MainPage struct {
+    Records []ExceptionRecord
+}
+
+type ExceptionRecord struct {
+	CreatedAt time.Time
+	Class, Message, Ref string
+}
+
+
+type StackTracePage struct {
+    Class, Message string
+	StackTrace     [][]string
+}
+%}
+
+{% func (p *MainPage) Title() %}
+	Ошибки
+{% endfunc %}
+
+{% func (p *MainPage) Body() %}
+	<div class="center-block-wrapper">
+		<table class="errors-log">
+		<tbody>		
+			{% for _,r := range p.Records %}
+				<tr>
+					<td>
+						{%s r.CreatedAt.Format("02.01.2006 15:04:05") %}
+					</td>
+					<td><b>{%s r.Class %}</b></td>
+					<td>{%s r.Message %}</td>
+					<td>
+						<a class="btn-link" href="{%s r.Ref %}">></a>
+					</td>
+					
+				</tr>			
+			{% endfor %}
+		</tbody>
+		</table>
+	</div>
+
+    
+	</body>
+{% endfunc %}
+
+{% func (p *StackTracePage) Title() %}
+	{%s p.Class %}
+{% endfunc %}
+
+
+{% func (p *StackTracePage) Body() %}
+	<a class="btn-link" href="/">
+		< Назад
+	</a>
+
+	<div class="center-block-wrapper">
+		<div class="exception-message">			
+			{%s p.Message %}
+		</div>
+	</div>
+
+	<div class="center-block-wrapper">
+		<table>
+		<tbody>
+			{% for _,line := range p.StackTrace %}
+				<tr>
+					{% for _,cell := range line %}
+						<td>{%s cell %}</td>
+					{% endfor %}
+				</tr>			
+			{% endfor %}
+		</tbody>
+		</table>
+	</div>
+
+	
+	
+
+{% endfunc %}
+
